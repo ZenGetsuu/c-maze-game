@@ -1,0 +1,47 @@
+Assignment Report:
+
+This report outlines the implemented functionalities for the game program, indicating which file and function each feature corresponds to. The program is mostly complete, with a few noted areas that could be refined.
+
+Functionalities Implemented:
+
+1. Game Initialization
+   - File: `game.c`
+   - Function: `initializeGameState`
+   - This function sets the initial positions of the player (`P`) and the snake (`~`) on the map. The player starts in the upper part of the map, and the snake is positioned near the bottom-right. This function also seeds the random number generator for snake movement.
+
+2. Map Loading and Display
+   - File: `map.c`, `map_utils.c`
+   - Functions: `loadMap` (in `map.c`), `deepCopyMap` and `freeMap` (in `map_utils.c`)
+   - `loadMap` reads the map dimensions and layout from a text file, converting integer representations of items to characters. `deepCopyMap` and `freeMap` support undo functionality by duplicating and freeing map states.
+
+3. Player Movement
+   - File: `game.c`
+   - Function: `updateGameState`, `movePlayer`
+   - `updateGameState` handles player commands (`w`, `a`, `s`, `d`) to update position on the map. It checks if the target position is passable and moves the player if valid. The function also prevents movement into walls (`O`) and borders (`*`).
+
+4. Snake Movement and Logic
+   - File: `game.c`
+   - Function: `moveSnake`
+   - The snake moves randomly but prioritizes moving directly to the player when one tile away. This logic helps simulate a chasing effect. The `moveSnake` function prevents the snake from entering walls and borders.
+
+5. Dark Mode (Limited Visibility)
+   - File: `game.c`
+   - Function: `printMap`
+   - In `printMap`, when compiled with DARK mode (`make DARK=1`), the player’s visibility is limited to 3 tiles in Manhattan distance. If the player picks up a lantern (`@`), visibility extends to 6 tiles.
+
+6. Game Over Conditions
+   - File: `game.c`
+   - Functions: `gameOver`, `updateGameState`
+   - The game ends when the player reaches the treasure (`$`) or when the snake captures the player. In either case, the program outputs “You win!” or “You lose!” and exits.
+
+7. Undo Functionality
+   - File: `undo.c`
+   - Functions: `pushGameState`, `popGameState`, `restoreGameState`
+   - The undo feature allows players to revert to the previous state. `pushGameState` saves the current game state, `popGameState` removes it, and `restoreGameState` reverts the map and character positions.
+
+Known Issues and Limitations:
+
+- Game Over on Player-Snake Encounter: Occasionally, the snake may occupy the same space as the player without triggering game over. Further testing could refine the `gameOver` condition in `updateGameState`.
+- Map Boundaries and Adjustments: The program’s map display occasionally required tweaking based on the `map.txt` layout and ensuring all walls and boundaries were properly handled.
+  
+This report provides an overview of the implemented functions and any known issues. The code was structured to follow C89 standards, and comments were added for readability across functions and files.
