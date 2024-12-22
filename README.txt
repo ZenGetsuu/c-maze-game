@@ -1,4 +1,4 @@
-**README**
+# C Maze Game
 
 ### Project Overview
 This program is a grid-based game in which the player must navigate a map, avoiding a snake and reaching the treasure to win. The game features limited visibility in "DARK mode," controlled through conditional compilation.
@@ -46,3 +46,33 @@ Run the program with the map file as an argument:
 - The snake’s movement occasionally may not immediately trigger game over when it reaches the player.
 - Walls and boundaries have been calibrated based on the map dimensions but may require slight adjustment depending on `map.txt`.
 
+### Gameplay Preview
+
+* * * * * * * * * * * * * * * * * * * * * *
+*             O                           *
+*     P       O                           *
+*         @   O           O O O O O       *
+*   O O       O           O       O       *
+*             O           O   $           *
+*         O O O           O       O       *
+*                         O O O O O       *
+*                                         *
+*                                         *
+*                     O                   *
+*                     O         O O O     *
+*                 O O O                   *
+*             O O O                       *
+*                                       ~ *
+*                                         *
+* * * * * * * * * * * * * * * * * * * * * *
+Controls:
+Press 'w' to move up
+Press 's' to move down
+Press 'a' to move left
+Press 'd' to move right
+Press 'u' to undo
+Press 'q' to quit
+
+### Future Improvements
+- Add levels with increasing difficulty.
+- Enhance snake movement logic to simulate AI.
